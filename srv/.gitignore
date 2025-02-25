@@ -32,3 +32,11 @@ mta_archives/
 
 # @cap-js/cds-typer
 @cds-models
+
+mta_archives/
+/resources/
+.vscode/
+.babelrc
+default-env.json
+.default-env.json
+manifest.yaml

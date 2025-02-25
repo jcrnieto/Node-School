@@ -6,3 +6,6 @@ applications:
     buildpacks:
       - nodejs_buildpack
     command: node server.js
+    services:
+      - destination-node
+      - school-auth
