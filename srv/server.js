@@ -4,22 +4,12 @@ xsenv.loadEnv();
 const express = require('express');
 const cors = require('cors');
 const dotenv = require("dotenv");
-// const {JWTStrategy} = require("@sap/xssec");
-// const passport = require("passport");
-// const xsenv = require("@sap/xsenv");
 
 dotenv.config();
-const app = express();
 
+const app = express();
 const api = require("./routes");
 const PORT = process.env.PORT || 3000;
-
-// passport.use(new JWTStrategy(xsenv.getServices({'uaa': {tag: "xsuaa"}}).uaa));
-// app.use(passport.initialize());
-// app.use(passport.authenticate("JWT", { session: false}));
-
-
-// console.log((xsenv.getServices({'uaa': {tag: "xsuaa"}}).uaa));
 
 app.use(cors());
 app.use(express.json());

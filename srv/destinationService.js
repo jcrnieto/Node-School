@@ -1,29 +1,23 @@
 const { executeHttpRequest } = require('@sap-cloud-sdk/http-client');
-const { retrieveJwt, getDestination } = require('@sap-cloud-sdk/connectivity');
+const { retrieveJwt } = require('@sap-cloud-sdk/connectivity');
 
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
 dotenv.config();
+
+const destination = process.env.DESTINATION_NAME
 
 const fetchEstablecimieto = async (req) => { 
   try {
-    const DESTINATION_NAME = "school-srv";
-
-    // const userJwt = retrieveJwt(req) || process.env.JWTauth;
-
-    // const destination = await req.execute({ destinationName:  DESTINATION_NAME});
-    // console.log('destination',destination)
-    // const userJwt = process.env.JWTauth;
     let jwt = retrieveJwt(req);
-    
     const response = await executeHttpRequest(
-      { destinationName: DESTINATION_NAME, jwt }, 
+      { destinationName: destination, jwt }, 
       {
         method: 'GET',
-        url: 'school/Establecimiento' 
+        url: '/odata/v4/school/School' 
       }
     );
-  
     console.log('Response:', response.data);
+    return response.data; 
     
   } catch (error) {
     console.error('Error al obtener Establecimiento:', error)
