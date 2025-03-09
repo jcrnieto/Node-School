@@ -1,16 +1,9 @@
 const express = require('express');
 
-const { fetchEstablecimieto } = require("../../destinationService");
+const schoolController = require("./School.controller"); 
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-    try {
-      const establecimiento = await fetchEstablecimieto(req)
-      res.send(establecimiento)
-    } catch (error) {
-      res.status(500).json({ error: "Error al obtener alumnos" });
-    }
-  });
+router.get("/allSchool", schoolController.allSchoolController);
 
 module.exports = router;
