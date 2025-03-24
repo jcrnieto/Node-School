@@ -20,9 +20,9 @@ router.use((req, res, next)=>{
   }
 })
 
-const school = require("./components/school/School.route");
+const cars = require("./components/cars/Cars.route");
 
-router.use("/school",school);
+router.use("/cars",cars);
 
 
 module.exports = router;

@@ -6,22 +6,22 @@ dotenv.config();
 
 const destination = process.env.DESTINATION_NAME
 
-exports.getAllSchool = async (req) => { 
+exports.getAllCars = async (req) => { 
   try {
     let jwt = retrieveJwt(req);
     const response = await executeHttpRequest(
       { destinationName: destination, jwt }, 
       {
         method: 'GET',
-        url: '/odata/v4/school/School' 
+        url: '/odata/v4/service/businessDB/Cars' 
       }
     );
     console.log('Response:', response.data);
     return response.data; 
     } catch (err) {
-    console.error('Error al obtener Establecimiento:', err)
+    console.error('Error al obtener autos:', err)
     throw {
-      message: err?.response?.data || err?.data || "Error desconocido en getAllSchool",
+      message: err?.response?.data || err?.data || "Error desconocido en getAllCars",
       status: err?.response?.status || err?.status || 500
     };
   }
